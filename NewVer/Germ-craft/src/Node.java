@@ -13,18 +13,19 @@ import java.awt.Graphics;
 
 public class Node {
     int id;
-    int x = 100,y = 25;
-    int multiplier = 2;
+    int x = 25,y = 25;
+    int multiplier = 1;
     int numGerm = 1;
-    int playerNum = 0;
+    int player = 0;
     int size = 100;
+    int attack = 0;
     boolean selected = false;
     
     public Node (int i,int m,int n,int p,int x,int y){
         id = i;
         multiplier =m;
         numGerm =n;
-        playerNum = p;
+        player = p;
         this.x=x;
         this.y=y;
     }
@@ -49,11 +50,11 @@ public class Node {
     public void setNumGerm (int n){
         numGerm = n;
     }
-    public int getPlayerNum (){
-        return playerNum;
+    public int getPlayer (){
+        return player;
     }
-    public void setPlayerNum(int p){
-        playerNum = p;
+    public void setPlayer(int p){
+        player = p;
     }
     public int getX (){
         return x;
@@ -79,9 +80,15 @@ public class Node {
     public void select(){
         selected = true;
     }
-    public void notselect(){
+    public void deselect(){
         selected = false;
     }
+    //attacking 1 is offense 2 is defense maybe something else tho
+    /*
+    public void attacking(int a){
+        attack = a;
+    }
+*/
     public void draw(Graphics g){
         g.drawOval(x,y,size,size);
         //g.drawRect(x, y, size, size);

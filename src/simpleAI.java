@@ -10,15 +10,16 @@ import java.util.*;
  */
 public class simpleAI {
   int[] aiNodes = new int[50];
-  
+  int moveDelay = 0;
   void initialize(int startNode){
     for(int i = 0; i < 50; i++){
         aiNodes[i] = 0;
     }
     aiNodes[startNode] = 1;              //startNode is set by game.java
   }
+
   void chooseMoves(Node[] nodes){
-    int moveDelay = 0;
+    moveDelay++;
     Random rand = new Random();
     int target = 0;
     if(moveDelay % 20 == 0){                //So that the AI isnt trying to do moves every tick.
@@ -35,13 +36,21 @@ public class simpleAI {
                     attack(node,target);
                 }
                 if(nodes[node].getNumGerm() < 50){          //Arbitrary transfer condition
-                    
+                    target = rand.nextInt(50);
+                    if(target != node){
+                        if(nodes[target].getPlayer() != 1 && nodes[target].getPlayer() != 0)
+                            break;
+                    }
                     transfer(node,target);
                 }
             }
         }
     }
   }
+  void updateNode(int capturedNode){
+      aiNodes[capturedNode] = 1;
+  }
+  
   void transfer(int startNode, int endNode){
   
   }

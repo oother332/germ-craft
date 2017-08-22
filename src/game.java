@@ -322,7 +322,7 @@ public class game extends JFrame implements KeyListener, ActionListener, MouseLi
     }
 
     public void actionPerformed(ActionEvent a) {
-        if (a.getSource() == t) {
+        if (a.getSource() == t) {                                                       //Updating germs in nodes @ time t
             for (int i = 0; i < nodeMax; i++) {
                 nodes[i].setNumGerm((nodes[i].getNumGerm()) + (nodes[i].getMultiplier()));
             }
